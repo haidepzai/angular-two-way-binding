@@ -6,10 +6,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./sizer.component.css']
 })
 export class SizerComponent {
-
-
+  //Input size: Nimmt die Werte vom Parent
   @Input()  size: number | string;
   @Output() sizeChange = new EventEmitter<number>();
+  //Output sizeChange: Übergibt die Werte an Parent
 
   dec() { this.resize(-1); }
   inc() { this.resize(+1); }
