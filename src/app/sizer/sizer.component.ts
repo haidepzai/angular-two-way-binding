@@ -1,28 +1,30 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-sizer',
-  templateUrl: './sizer.component.html',
-  styleUrls: ['./sizer.component.css']
+  selector: "app-sizer",
+  templateUrl: "./sizer.component.html",
+  styleUrls: ["./sizer.component.css"]
 })
 export class SizerComponent {
-  //Input size: Nimmt die Werte vom Parent
-  @Input()  size: number | string;
+  //Input size: Nimmt die Werte vom Parent (app.component)
+  @Input() size: number | string;
   @Output() sizeChange = new EventEmitter<number>();
-  //Output sizeChange: Übergibt die Werte an Parent
+  //Output sizeChange: Übergibt die Werte an Parent (app.component)
 
-  dec() { this.resize(-1); }
-  inc() { this.resize(+1); }
+  dec() {
+    this.resize(-1);
+  }
+  inc() {
+    this.resize(+1);
+  }
 
   resize(delta: number) {
     //1. Beim Klicken von dec/inc wird size neu gesetzt
-    this.size = Math.min(40, Math.max(8, +this.size + delta)); 
+    this.size = Math.min(40, Math.max(8, +this.size + delta));
     //2. sizeChange emitted neue Size und übergibt Eltern
-    this.sizeChange.emit(this.size);
+    this.sizeChange.emit(this.size); //emit($event) also SIZE
   }
-
 }
-
 
 /*
 Copyright Google LLC. All Rights Reserved.
